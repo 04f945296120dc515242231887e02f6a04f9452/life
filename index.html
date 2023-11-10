@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Игра "Жизнь"</title>
+  <style>
+    /* Стили для игрового поля */
+    .cell {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Игра "Жизнь"</h1>
+  <div id="gameBoard"></div>
+  <button onclick="startGame()">Старт</button>
+  <button onclick="stopGame()">Стоп</button>
+
+  <script>
+    // Логика игры
+    const rows = 30;
+    const cols = 30;
+    let gameBoard = [];
+
+    function createGameBoard() {
+      for (let i = 0; i < rows; i++) {
+        gameBoard[i] = [];
+        for (let j = 0; j < cols; j++) {
+          gameBoard[i][j] = Math.round(Math.random());
+        }
+      }
+    }
+
+    function drawGameBoard() {
+      let board = document.getElementById('gameBoard');
+      board.innerHTML = '';
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          let cell = document.createElement('div');
+          cell.className = gameBoard[i][j] ? 'cell alive' : 'cell dead';
+          board.appendChild(cell);
+        }
+        board.appendChild(document.createElement('br'));
+      }
+    }
+
+    function startGame() {
+      createGameBoard();
+      drawGameBoard();
+      // Запуск игры
+    }
+
+    function stopGame() {
+      // Остановка игры
+    }
+  </script>
+</body>
+</html>
